@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/base.css">
+    <style>
+        body,html{height: 100%;}
+        *{ margin:0;padding:0; list-style:none;}
+        .fl{float: left; }
+        .header{width: 100%;
+            height:100%;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            background: url("img/04.png") no-repeat;
+            background-size: 16rem 100%;
+            position: relative;}
+        .portrait{width: 100%;
+            height: 2.2rem;
+            overflow: hidden;
+            background: url("img/08.png") no-repeat 0.3rem 0 rgb(107, 221, 230);
+            background-size: 2.5rem;
+        }
+        .menu{width: 2.5rem;
+            height: 2.5rem;
+            background: url("img/03.png") no-repeat;
+            background-size: 2rem 2.5rem;
+            position: absolute; right: 0;
+            top:0;}
+        .title{ width:100%;
+            opacity: 0;
+            overflow: hidden;
+            -webkit-transition: 1s all ease;
+            position: absolute;
+            left: 0;
+            top: 15rem;}
+        .title li{
+            -webkit-transition: 0.5s all ease;
+            width: 0;
+            height: 1.5rem;
+            margin-top: 0.2rem;
+            line-height: 1.5rem;
+            color: #f6f6fe;
+            overflow: hidden;
+            font-weight: bolder;
+            background: rgba(25, 158, 255, 0.9);  }
+        .title li:nth-child(odd){
+            background: rgba(29, 220, 255, 0.83);
+        }
+        footer{height: 2rem; width:100%; }
+        footer nav{display:-webkit-box;
+            width: 100%;
+            height: 2rem;}
+        nav a{ display:block;
+            color: #245dcc;
+            -webkit-box-flex:1;
+            height:100%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bolder;
+            width: 33%;
+        }
+        .bor{ line-height: 2rem;
+            padding-top: 12rem;
+            width: 100%;
+           background: url("img/05.png") no-repeat 0 7rem;
+            font-size: 1.8rem;
+            text-align: center;
+             color: #fff;
+            font-weight: bolder;
+           position: absolute;
+        }
+        nav a:nth-child(1){ background: rgba(25, 195, 255, 0.96);}
+        nav a:nth-child(2){ background: #5f8aff;}
+        nav a:nth-child(3){ background: #5268ff;}
+        .content{ -webkit-box-flex:1;
+            overflow-y:auto;
+            height: 100%;
+            position: relative;
+            background: url("img/02.jpg") no-repeat;
+            background-size: 100% 15rem;
+        }
+        .advert{ width: 100%;height: 15rem; position: absolute; opacity: 0;-webkit-transition: 1s all ease;}
+    </style>
+    <script>
+        var rem=20;
+        (function(doc,win){
+            rem =20/320*doc.documentElement.clientWidth;
+            doc.documentElement.style.fontSize=rem+'px';
+            win.addEventListener('resize',function(){
+                doc.documentElement.style.fontSize=doc.documentElement.clientWidth*20/320+'px';
+            },false);
+            win.addEventListener('load',function(){
+                doc.documentElement.style.fontSize=doc.documentElement.clientWidth*20/320+'px';
+            },false)
+        })(document,window);
+        function rnd(n,m){
+            return Math.floor(Math.random()*(m-n)+n)
+        }
+        window.onload=function(){
+            var oHea = document.getElementById('header');
+            var oPort =document.getElementById('portrait');
+            var oMenu = document.getElementById('menu');
+            var oTitle = document.getElementById('title');
+            var oLi =oTitle.children;
+            var oNav = document.getElementById('nav');
+            var oA = oNav.getElementsByTagName('a')[0];
+            var oAdv = document.getElementById('advert');
+            var bOk =true;
+            oA.addEventListener('touchstart', function tab(){
+                if(bOk){
+                    oTitle.style.opacity=1;
+                    for(var i=0;i<oLi.length;i++){
+                        oLi[0].style.width=100+'%';
+                        oLi[1].style.width=90+'%';
+                        oLi[2].style.width=85+'%';
+                        oLi[3].style.width=93+'%';
+                        oLi[4].style.width=83+'%';
+                        oLi[i].style.paddingLeft=0.5+'rem';
+                        oAdv.style.opacity=1;
+
+                    }
+                    bOk=false;
+                }else{
+                    bOk=true;
+
+                    oTitle.style.opacity=0;
+                    for(var i=0;i<oLi.length;i++){
+                        oLi[i].style. width=0+'rem';
+                        oLi[i].style.paddingLeft=0+'rem';
+                        oAdv.style.opacity=0;
+                    }
+                }
+
+
+            },false);
+            oA.addEventListener('tochstart',function(){
+oSon.style.opacity=0;
+            },false)
+
+        }
+    </script>
+</head>
+<body>
+<header class="header" id="header">
+    <div class="portrait" id="portrait">
+        <span class="menu" id="menu"></span>
+    </div>
+    <section class="content">
+        <img src="img/01.jpg" alt="虚化" class="advert" id="advert">
+        <div class="bor"></div>
+        <ul class="title fl" id="title">
+
+            <li>HTML+CSS+Ps</li>
+            <li>Javascript+jQuery</li>
+            <li>Ajax+Jsonp+Cookie</li>
+            <li>Less+scss</li>
+            <li>Grunt+Gulp</li>
+
+
+        </ul>
+    </section>
+
+    <footer>
+<nav class="nav" id="nav">
+    <a href="javascript:;">skill</a>
+    <a href="javascript:;"></a>
+    <a href="javascript:;"></a>
+</nav>
+        </footer>
+</header>
+
+</body>
+</html>
